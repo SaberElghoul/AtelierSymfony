@@ -1,0 +1,34 @@
+{% extends 'index.html.twig' %}
+
+
+
+{% block personne %}
+    <h2   class="page page-header"> Liste des personnes </h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>name</th>
+            <th>Last Name</th>
+            <th>age</th>
+            <th>----</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+            <tr >
+                <td>     <a class="media-avatar pull-left" href="/show/{{ personne.id }}">
+                        <img src="{{ asset('template/images/user.jpg') }}" width="88" height="80">
+                    </a></td>
+                <td>{{ personne.name }}</td>
+                <td>{{ personne.lastname}}</td>
+                <td>{{ personne.age}}</td>
+                <td> <a href="/show/{{ personne.id }}" class="btn btn-success">view </a>
+                   <a href="/edit/{{ personne.id }}" class="btn btn-warning">edit </a>
+                    <a href="/remove/{{ personne.id }}" class="btn btn-danger">delete </a> </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

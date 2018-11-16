@@ -1,0 +1,16 @@
+{% extends 'index.html.twig' %}
+
+
+{% block title %} Edit{% endblock %}
+
+{% block personne %}
+    <h1> Edit your CV  </h1>
+
+
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+
+{% endblock %}

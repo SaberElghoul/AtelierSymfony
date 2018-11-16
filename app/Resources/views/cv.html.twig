@@ -1,0 +1,28 @@
+{% extends 'index.html.twig' %}
+{% block cv %}
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="span6">
+            <div class="media user">
+                <a class="media-avatar pull-left" href="#">
+                    <img src="{{ asset('template/images/user.jpg') }}" width="88" height="80">
+                </a>
+                <div class="media-body">
+                    <h3 class="media-title">
+                       {{ user.nom }} {{ user.prenom }}
+                    </h3>
+
+                       Age {{ user.age }} Ans
+
+                    <p>
+                        <small class="muted">Tunis</small></p>
+
+                </div>
+                Date :{{ user.dateajout|date('F j, Y, g:i a') }}
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+</div>
+{% endblock %}

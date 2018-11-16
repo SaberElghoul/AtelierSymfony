@@ -1,0 +1,44 @@
+{% extends 'index.html.twig' %}
+
+
+{% block title %} Add{% endblock %}
+
+{% block personne %}
+    <h1>  your CV </h1>
+
+
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="span6">
+                <div class="media user">
+                    <a class="media-avatar pull-left" href="#">
+                        <img src="{{ asset('template/images/user.jpg') }}" width="88" height="80">
+                    </a>
+                    <div class="media-body">
+                        <h3 class="media-title">
+                      {{ personne.Name }} {{ personne.lastName }}
+                        </h3>
+
+                        Age : {{ personne.age }} Years old
+
+                        <p>
+                            <small class="muted">Tunis</small></p>
+
+                    </div>
+
+
+                    <a href="{{ path('CVList') }}" class="btn btn-success">Back to the list</a>
+                    <a href="/edit/{{ personne.id }}" class="btn btn-warning">edit </a>
+                        <a href="/remove/{{ personne.id }}" class="btn btn-danger">delete </a>
+
+
+                </div>
+            </div>
+        </div><!-- /.row -->
+
+    </div>
+
+
+{% endblock %}
