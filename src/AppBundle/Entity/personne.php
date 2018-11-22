@@ -50,6 +50,28 @@ class personne
     private $path;
 
 
+    /**
+     * @ORM\OneToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="media_id",referencedColumnName="id")
+     */
+    private $media;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Adresse")
+     * @ORM\JoinColumn(name="adresse_id", referencedColumnName="id")
+     */
+    private $adresses;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Emploi")
+     * @ORM\JoinTable(name="users_jobs" )
+     */
+
+    private $emplois;
+
+
 
     /**
      * Get id
@@ -155,5 +177,94 @@ class personne
     public function getPath()
     {
         return $this->path;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->emplois = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set media
+     *
+     * @param \AppBundle\Entity\Media $media
+     *
+     * @return personne
+     */
+    public function setMedia(\AppBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \AppBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * Set adresses
+     *
+     * @param \AppBundle\Entity\Adresse $adresses
+     *
+     * @return personne
+     */
+    public function setAdresses(\AppBundle\Entity\Adresse $adresses = null)
+    {
+        $this->adresses = $adresses;
+
+        return $this;
+    }
+
+    /**
+     * Get adresses
+     *
+     * @return \AppBundle\Entity\Adresse
+     */
+    public function getAdresses()
+    {
+        return $this->adresses;
+    }
+
+    /**
+     * Add emplois
+     *
+     * @param \AppBundle\Entity\Emploi $emplois
+     *
+     * @return personne
+     */
+    public function addEmplois(\AppBundle\Entity\Emploi $emplois)
+    {
+        $this->emplois[] = $emplois;
+
+        return $this;
+    }
+
+    /**
+     * Remove emplois
+     *
+     * @param \AppBundle\Entity\Emploi $emplois
+     */
+    public function removeEmplois(\AppBundle\Entity\Emploi $emplois)
+    {
+        $this->emplois->removeElement($emplois);
+    }
+
+    /**
+     * Get emplois
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmplois()
+    {
+        return $this->emplois;
     }
 }
